@@ -1,7 +1,7 @@
 <h1 align="center">NorthwindData</h1>
 
 <div align="center">
- ![Learning](https://media.wired.com/photos/5932988b9be5e55af6c261cb/master/pass/learning-styles.jpg)
+ ![Learning](https://www.pngrepo.com/download/286224/books-study.png)
 </div>
 <div align="center">
   NorthwindData is a small project used by me for learning purposes. In this project I am presenting my knowledge for project architecture.
