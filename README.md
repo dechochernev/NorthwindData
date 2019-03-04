@@ -31,4 +31,9 @@
   </h3>
 </div>
 
+##### Resources:
+<a href="https://github.com/Microsoft/sql-server-samples/blob/master/samples/databases/northwind-pubs/instnwnd.sql">
+      Link to databased used in the project
+</a>
+
 
