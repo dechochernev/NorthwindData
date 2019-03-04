@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Usecases.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace NorthwindApp.Controllers
 {
@@ -25,7 +26,7 @@ namespace NorthwindApp.Controllers
         }
 
         [HttpGet("[action]")]
-        public async System.Threading.Tasks.Task<JsonResult> GetAllRegionsAsync()
+        public async Task<JsonResult> GetAllRegionsAsync()
         {
             var regions = await getAllRegions.GetAllRegionsAsync();
 
@@ -33,7 +34,7 @@ namespace NorthwindApp.Controllers
         }
 
         [HttpGet("[action]")]
-        public async System.Threading.Tasks.Task<JsonResult> GetTerritoriesForRegionAsync(int regionId)
+        public async Task<JsonResult> GetTerritoriesForRegionAsync(int regionId)
         {
             var territories = await getTerritoriesForRegion.GetTerritoriesForRegionAsync(regionId);
 
@@ -41,7 +42,7 @@ namespace NorthwindApp.Controllers
         }
 
         [HttpGet("[action]")]
-        public async System.Threading.Tasks.Task<JsonResult> GetEmployeesForTerritoryAsync(string territoryId)
+        public async Task<JsonResult> GetEmployeesForTerritoryAsync(string territoryId)
         {
             var employees = await getEmployeesForTerritory.GetEmployeesForTerritoryAsync(territoryId);
 
@@ -49,7 +50,7 @@ namespace NorthwindApp.Controllers
         }
 
         [HttpPost("[action]")]
-        public async System.Threading.Tasks.Task<IActionResult> UpdateEmployeeNotesAsync(int employeeId, string notes)
+        public async Task<IActionResult> UpdateEmployeeNotesAsync(int employeeId, string notes)
         {
             await updateEmployeeNotes.UpdateEmployeeNotesAsync(employeeId, notes);
             return CreatedAtAction(nameof(UpdateEmployeeNotesAsync),employeeId);
