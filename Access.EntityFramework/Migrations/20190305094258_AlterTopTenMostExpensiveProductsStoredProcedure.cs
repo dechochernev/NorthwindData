@@ -8,7 +8,7 @@ namespace Access.EntityFramework.Migrations
         {
             migrationBuilder.Sql("ALTER procedure [dbo].[Ten Most Expensive Products] AS " +
                 "SET ROWCOUNT 10 " +
-                "SELECT Products.ProductName, Products.UnitPrice " +
+                "SELECT Products.ProductID, Products.ProductName, Products.UnitPrice " +
                 "FROM Products " +
                 "ORDER BY Products.UnitPrice DESC");
         }

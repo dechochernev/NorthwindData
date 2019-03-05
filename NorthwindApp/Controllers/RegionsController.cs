@@ -60,7 +60,7 @@ namespace NorthwindApp.Controllers
         }
 
         [HttpGet("[action]")]
-        public async Task<JsonResult> GetReportingDataAsync(string territoryId)
+        public async Task<JsonResult> GetReportingDataAsync()
         {
             var reportingData = await getMostExpensiveProducts.GetMostExpensiveProductsAsync();
             var reportingViewModel = new ReportingViewModel();

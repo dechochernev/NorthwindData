@@ -19,6 +19,11 @@ export default props => (
                     Northwind
                     </Nav.Link>
             </LinkContainer>
+            <LinkContainer to={'/northwindReporting'}>
+                <Nav.Link>
+                    Reporting
+                    </Nav.Link>
+            </LinkContainer>
         </Nav>
     </Navbar>
 );

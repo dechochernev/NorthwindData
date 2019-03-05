@@ -40,6 +40,7 @@ namespace Access.EntityFramework.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Query<ExpensiveProduct>();
             modelBuilder.Entity<Categories>(entity =>
             {
                 entity.HasKey(e => e.CategoryId);

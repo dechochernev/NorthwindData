@@ -1,7 +1,8 @@
 ﻿const receiveNorthwindRegionsType = 'RECEIVE_NORTHWINDREGIONS';
 const requestTerritoriesForRegion = 'REQUEST_TERRITORIESFORREGIONS';
 const requestEmployeesForTerritory = 'REQUEST_EMPLOYEESFORTERRITORY';
-const initialState = { regions: [], territories: [], employees: [], currentRegionId: 0, currentRegionName:'', isLoading: false };
+const requestMostExpensiveProducts = 'REQUEST_MOSTEXPENSIVEPRODUCTS';
+const initialState = { regions: [], territories: [], employees: [], mostExpensiveProducts: [], currentRegionId: 0, currentRegionName:'', isLoading: false };
 
 export const actionCreators = {
     requestRegions: () => async (dispatch) => {
@@ -29,8 +30,15 @@ export const actionCreators = {
     UpdateEmployeeNotes: (employeeId, notes, territoryId) => async (dispatch) => {
         const url = `api/Regions/UpdateEmployeeNotesAsync?employeeId=${employeeId}&notes=${notes}`;
         const response = await fetch(url, {method: 'post'});
-        const employees = await response.text();
         dispatch(actionCreators.requestEmployeesForTerritory(territoryId));
+    },
+    requestMostExpensiveProducts: () => async (dispatch) => {
+        const url = `api/Regions/GetReportingDataAsync`;
+
+        const response = await fetch(url);
+        const products = await response.json();
+
+        dispatch({ type: requestMostExpensiveProducts, products });
     }
 };
 
@@ -56,6 +64,13 @@ export const reducer = (state, action) => {
         return {
             ...state,
             employees: action.employees
+        };
+    }
+
+    if (action.type === requestMostExpensiveProducts) {
+        return {
+            ...state,
+            mostExpensiveProducts: action.products
         };
     }
 

@@ -21,13 +21,13 @@ namespace Access.EntityFramework.QueryHandlers
         {
             using (var context = northwindContext)
             {
-                var products = await context.Products.FromSql("EXEC [dbo].[Ten Most Expensive Products]").ToListAsync();
+                var products = await context.Query<ExpensiveProduct>().FromSql("EXEC [dbo].[Ten Most Expensive Products]").ToListAsync();
 
                 return Transform(products);
             }
         }
 
-        private IEnumerable<Product> Transform(List<Products> products)
+        private IEnumerable<Product> Transform(List<ExpensiveProduct> products)
         {
             foreach (var product in products)
             {
