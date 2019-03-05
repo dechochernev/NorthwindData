@@ -49,7 +49,13 @@
   * This layer uses Entity framework core to communicate with SQL server. 
   * This layer uses CQRS pattern and more precisely Command and Query pattern. Commands would make change to the database and queries would retrieve data.
 
-
+### Features
+* __Version 1.0__ 
+  * Show employees for certain territories.
+  * Change employee description.
+* __Version 1.1__
+  * Show the 10 most expensive products
+  
 ##### Resources:
 <a href="https://github.com/Microsoft/sql-server-samples/blob/master/samples/databases/northwind-pubs/instnwnd.sql">
       Link to database used in the project
