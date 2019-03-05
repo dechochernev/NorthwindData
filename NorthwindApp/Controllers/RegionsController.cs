@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Usecases.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using NorthwindApp.ViewModels;
 using System.Threading.Tasks;
 
 namespace NorthwindApp.Controllers
@@ -11,17 +12,20 @@ namespace NorthwindApp.Controllers
         private readonly IGetTerritoriesForRegion getTerritoriesForRegion;
         private readonly IGetEmployeesForTerritory getEmployeesForTerritory;
         private readonly IUpdateEmployeeNotes updateEmployeeNotes;
+        private readonly IGetMostExpensiveProducts getMostExpensiveProducts;
 
         public RegionsController(
             IGetAllRegions getAllRegions, 
             IGetTerritoriesForRegion getTerritoriesForRegion, 
             IGetEmployeesForTerritory getEmployeesForTerritory, 
-            IUpdateEmployeeNotes updateEmployeeNotes)
+            IUpdateEmployeeNotes updateEmployeeNotes,
+            IGetMostExpensiveProducts getMostExpensiveProducts)
         {
             this.getAllRegions = getAllRegions;
             this.getTerritoriesForRegion = getTerritoriesForRegion;
             this.getEmployeesForTerritory = getEmployeesForTerritory;
             this.updateEmployeeNotes = updateEmployeeNotes;
+            this.getMostExpensiveProducts = getMostExpensiveProducts;
         }
 
         [HttpGet("[action]")]
@@ -53,6 +57,15 @@ namespace NorthwindApp.Controllers
         {
             await updateEmployeeNotes.UpdateEmployeeNotesAsync(employeeId, notes);
             return CreatedAtAction(nameof(UpdateEmployeeNotesAsync),employeeId);
+        }
+
+        [HttpGet("[action]")]
+        public async Task<JsonResult> GetReportingDataAsync(string territoryId)
+        {
+            var reportingData = await getMostExpensiveProducts.GetMostExpensiveProductsAsync();
+            var reportingViewModel = new ReportingViewModel();
+            reportingViewModel.MostExpensiveProducts = reportingData;
+            return Json(reportingViewModel);
         }
     }
 }
