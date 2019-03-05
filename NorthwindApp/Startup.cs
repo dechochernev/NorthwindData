@@ -45,12 +45,14 @@ namespace NorthwindApp
             services.AddScoped<IGetAllRegionsQuery, GetAllRegionsQueryHandler>();
             services.AddScoped<IGetTerritoriesForRegionQuery, GetTerritoriesForRegionQueryHandler>();
             services.AddScoped<IGetEmployeesForTerritoryQuery, GetEmployeesForTerritoryQueryHandler>();
+            services.AddScoped<IGetMostExpensiveProductsQuery, GetMostExpensiveProductsQueryHandler>();
 
             //Usecases
             services.AddScoped<IGetAllRegions, GetAllRegions>();
             services.AddScoped<IGetTerritoriesForRegion, GetTerritoriesForRegion>();
             services.AddScoped<IGetEmployeesForTerritory, GetEmployeesForTerritory>();
             services.AddScoped<IUpdateEmployeeNotes, UpdateEmployeeNotes>();
+            services.AddScoped<IGetMostExpensiveProducts, GetMostExpensiveProducts>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
