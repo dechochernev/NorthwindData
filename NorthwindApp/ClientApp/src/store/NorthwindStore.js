@@ -70,7 +70,7 @@ export const reducer = (state, action) => {
     if (action.type === requestMostExpensiveProducts) {
         return {
             ...state,
-            mostExpensiveProducts: action.products
+            mostExpensiveProducts: action.products.mostExpensiveProducts
         };
     }
 

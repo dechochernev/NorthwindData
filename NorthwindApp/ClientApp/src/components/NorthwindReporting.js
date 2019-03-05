@@ -12,7 +12,10 @@ class NorthwindReporting extends Component {
         return (
             <div>
                 <h1>Northwind reporting</h1>
-                {renderRegionsTable(this.props)}
+                <blockquote className='blockquote'>
+                    <p className='mb-0'>Top 10 most expensive products</p>
+                </blockquote>
+                    {renderRegionsTable(this.props)}
             </div>
         );
     }
@@ -24,10 +27,16 @@ function renderRegionsTable(props) {
             <thead>
                 <tr>
                     <th>Name</th>
+                    <th>Price</th>
                 </tr>
             </thead>
             <tbody>
-               <div>test</div>
+                {props.mostExpensiveProducts.map(product =>
+                    <tr key={product.productId}>
+                        <td>{product.productName}</td>
+                        <td>{product.unitPrice}</td>
+                    </tr>
+                )}
             </tbody>
         </table>
     );
